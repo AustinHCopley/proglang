@@ -35,14 +35,17 @@ and
             | true -> r::(merge (left, rs))
             | false -> l::(merge (ls, right))
 and
-    mergesort = fun l ->
-        let (left, right) = split left
-        in
-        let sorted_l = mergesort left in
-        let sorted_r = mergesort right in
-        merge (sorted_l, sorted_r)
+    mergesort = fun l -> match l with
+        | [] -> []
+        | [_] -> []
+        | _ -> let (left, right) = split left
+            in
+            let sorted_l = mergesort left in
+            let sorted_r = mergesort right in
+            merge (sorted_l, sorted_r)
 in
     print_list (reverse [1; 2; 3]);
     print_list (
         map ((fun x -> x + 1), [1;2;3])
     );
+    print_list (mergesort [1;3;8;5;2])

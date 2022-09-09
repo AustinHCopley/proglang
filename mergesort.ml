@@ -46,6 +46,13 @@ and
 in
     print_list (reverse [1; 2; 3]);
     print_list (
-        map ((fun x -> x + 1), [1;2;3])
+        map ((fun x -> x + 1), [1;2;3;4])
     );
     print_list (mergesort [1;3;8;5;2])
+
+let rec map = fun f -> (
+    fun x -> (match x with
+        | [] -> []
+        | a::more -> (f a) ::(map f more)
+    )
+)

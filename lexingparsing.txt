@@ -1,0 +1,30 @@
+lexer: transforms sequence of characters into sequence of tokens
+parser: forms a tree of tokens
+lexer input: stream of chars
+parser input: stream of tokens
+tokens:
+    literals: "str", 123, etc.
+    operators: +, -, etc.
+    keywords: true, false, if
+    identifiers: a, b, foo
+
+lexer supplies parser with tokens, parser produces tree
+Lexer
+basic idea
+    define tokens with regular expressions
+    this results in a nondeterministic finite automaton (NFA)
+An NFA corresponds to a regular language
+Note that an NFA is less powerful than a context-free grmmar, so the lexer is more limited than the parser, in terms of their languages
+Specific instance of a token is called a lexeme
+
+Regular expressionsR ::= eps | c | R + R | R R | R*
+c eps sig
+
+eps - empty string
+c - character in alphabet
+R + R - choice (match either)
+R R - sequencing (one followed by the other)
+R* - Kleene closure (zero or more)
+
+Thompson's Construction (Regular Experession to NFA)
+Given regex R, compute N(R), an NFA that recognizes the same language

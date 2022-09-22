@@ -20,7 +20,7 @@ let rec treemap = fun f -> (
 
 reduce f [1; 2; 3; 4; 5] = f (f (f (f (1,2), 3), 4), 5)
 let rec listreduce = fun f -> (
-  fun x -> (match, x with
+  fun x -> (match x with
     | [y] -> y
     | a::b::more -> reduce f ((f (a,b))::more)
   )
